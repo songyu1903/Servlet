@@ -45,8 +45,6 @@ public class ResultServlet extends HttpServlet{
 		
 		out.append("</html>");
 		
-		
-		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
