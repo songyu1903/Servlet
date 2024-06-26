@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="todo">
+	<insert id="insertTodo" parameterType="todoDTO">
+		INSERT INTO
+		TBL_TODO(TODO_ID, TITLE, WRITER, TODO_DATE, FINISHED)
+		VALUES(SEQ_TODO.NEXTVAL, #{title}, #{writer}, #{todoDate}, 0)
+	</insert>
+	<select id="selectAll" resultType="todoDTO">
+		SELECT TODO_ID, TITLE, WRITER,
+		TO_CHAR(TODO_DATE, 'YYYY-MM-DD') TODO_DATE, FINISHED
+		FROM TBL_TODO
+		ORDER BY TODO_DATE
+	</select>
+
+	<select id="selectTodo" parameterType="int" resultType="todoDTO">
+		SELECT TODO_ID, TITLE, WRITER, TO_CHAR(TODO_DATE, 'YYYY-MM-DD') TODO_DATE, FINISHED
+		FROM TBL_TODO
+		WHERE TODO_ID = #{todoId}
+	</select>
+</mapper>
